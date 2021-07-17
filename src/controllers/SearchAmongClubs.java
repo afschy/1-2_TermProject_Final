@@ -49,7 +49,7 @@ public class SearchAmongClubs {
     @FXML
     private void searchButtonPressed(ActionEvent event) throws IOException {
         String name = sample.IOControl.formatName(nameField.getText());
-        Club relevantClub = sample.SearchClubs.getRelevantClub(Main.clubList, name);
+        Club relevantClub = Main.currentClub;
         if(relevantClub == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR: Invalid Input");

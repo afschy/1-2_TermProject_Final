@@ -10,11 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Club;
+import sample.Main;
 import sample.Player;
 import java.io.IOException;
 import sample.AddPlayer;
 
-import static sample.Main.clubList;
 import static sample.Main.playerList;
 
 public class AddNewPlayer {
@@ -112,16 +112,8 @@ public class AddNewPlayer {
         }
         playerToAdd.setSalary(salary);
 
-        if(AddPlayer.findClubForPlayer(playerToAdd, clubList)) {
-            playerList.add(playerToAdd);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Player successfully added");
-            alert.setContentText("Player successfully added");
-            alert.showAndWait();
-        }
-        else
-            showAlert(playerToAdd.getClubName() + " already has " + Club.MAX_PLAYER_COUNT + " players");
+        Main.currentClub.getPlayers().add(playerToAdd);
+        playerList.add(playerToAdd);
     }
 
     private void showAlert(String body){

@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sample.Main;
 
 import java.io.IOException;
 
@@ -48,6 +49,8 @@ public class Home {
     private void exitSystem() throws Exception {
         Stage stage = (Stage) button4.getScene().getWindow();
         //sample.IOControl.writeToFile(sample.Main.playerList, sample.Main.OUTPUT_FILE_NAME);
+        Main.client.getNetworkUtil().closeConnection();
+        //Main.client.getReadThread().setStatus(false);
         stage.close();
     }
 

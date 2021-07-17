@@ -1,5 +1,7 @@
 package networking;
 
+import messages.*;
+
 public class ReadThreadServer implements Runnable{
     private Thread thr;
     private NetworkUtil networkUtil;
@@ -15,21 +17,22 @@ public class ReadThreadServer implements Runnable{
     @Override
     public void run() {
         try{
-            while(true){
+            while(true) {
                 Object o = networkUtil.read();
 
-                if(o instanceof String){
-                    String name = (String)o;
+                if(o instanceof LoginRequest){
+                    LoginRequest loginMessage = (LoginRequest) o;
                     boolean flag = false;
-                    for(sample.Club c : parent.clubList){
-                        if(c.getName().equalsIgnoreCase(name)){
-                            networkUtil.write(new sample.Club(c));
+                    for(sample.Club c: parent.clubList){
+                        if(c.getName().equalsIgnoreCase(loginMessage.getClubName())){
+                            networkUtil.write(new LoginAnswer(new sample.Club(c), true));
                             flag = true;
+                            //System.out.println("true");
                             break;
                         }
                     }
                     if(!flag)
-                        networkUtil.write("No such club found.");
+                        networkUtil.write(new LoginAnswer(null, false));
                 }
             }
         }catch(Exception e){
