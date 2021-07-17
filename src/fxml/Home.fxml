@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
+   <children>
+      <Label layoutX="144.0" layoutY="42.0" prefHeight="43.0" prefWidth="310.0" text="Database System Home">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <VBox layoutX="134.0" layoutY="101.0" prefHeight="305.0" prefWidth="331.0" spacing="20.0">
+         <children>
+            <Button fx:id="button1" mnemonicParsing="false" onAction="#startSearchAmongPlayers" prefHeight="43.0" prefWidth="334.0" text="Search Among Players">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="button2" mnemonicParsing="false" onAction="#startSearchAmongClubs" prefHeight="43.0" prefWidth="334.0" text="Search Among Clubs">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="button3" mnemonicParsing="false" onAction="#startAddNewPlayer" prefHeight="43.0" prefWidth="346.0" text="Add New Player">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOutButtonPressed" prefHeight="48.0" prefWidth="331.0" text="Log Out">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="button4" mnemonicParsing="false" onAction="#exitSystem" prefHeight="43.0" prefWidth="351.0" text="Exit System">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

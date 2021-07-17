@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayerInfoTable">
+   <children>
+      <Label layoutX="360.0" layoutY="26.0" text="Results:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView" layoutX="26.0" layoutY="120.0" prefHeight="461.0" prefWidth="751.0">
+         <columns>
+            <TableColumn fx:id="nameCol" prefWidth="171.20001220703125" text="Name" />
+            <TableColumn fx:id="countryCol" prefWidth="67.199951171875" text="Country" />
+            <TableColumn fx:id="ageCol" prefWidth="41.5999755859375" text="Age" />
+            <TableColumn fx:id="heightCol" prefWidth="76.0" text="Height" />
+            <TableColumn fx:id="clubNameCol" prefWidth="145.60003662109375" text="Club Name" />
+            <TableColumn fx:id="positionCol" prefWidth="86.39996337890625" text="Position" />
+            <TableColumn fx:id="jerseyNumberCol" prefWidth="70.4000244140625" text="Number" />
+            <TableColumn fx:id="salaryCol" prefWidth="86.39990234375" text="Salary" />
+         </columns></TableView>
+      <Label fx:id="counter" layoutX="26.0" layoutY="69.0" prefHeight="30.0" prefWidth="394.0" text="Label" textAlignment="JUSTIFY">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="26.0" layoutY="26.0" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="4.0" prefWidth="11.0">
+         <font>
+            <Font size="1.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Back-Button-PNG.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
