@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
    <children>
       <Label layoutX="144.0" layoutY="42.0" prefHeight="43.0" prefWidth="310.0" text="Database System Home">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <VBox layoutX="134.0" layoutY="101.0" prefHeight="305.0" prefWidth="331.0" spacing="20.0">
+      <VBox layoutX="134.0" layoutY="101.0" prefHeight="375.0" prefWidth="331.0" spacing="20.0">
          <children>
             <Button fx:id="button1" mnemonicParsing="false" onAction="#startSearchAmongPlayers" prefHeight="43.0" prefWidth="334.0" text="Search Among Players">
                <font>
@@ -26,6 +26,11 @@
                </font>
             </Button>
             <Button fx:id="button3" mnemonicParsing="false" onAction="#startAddNewPlayer" prefHeight="43.0" prefWidth="346.0" text="Add New Player">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="transferButton" mnemonicParsing="false" onAction="#transferButtonPressed" prefHeight="48.0" prefWidth="346.0" text="Open Transfer Window">
                <font>
                   <Font size="20.0" />
                </font>

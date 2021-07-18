@@ -55,7 +55,7 @@ public class SearchAmongPlayers {
             return;
         }
 
-        List<Player> result = sample.SearchPlayers.masterPlayerSearch(Main.playerList,name,country,clubName,position,lowerBound,upperBound);
+        List<Player> result = sample.SearchPlayers.masterPlayerSearch(Main.currentClub.getPlayers(),name,country,clubName,position,lowerBound,upperBound);
 
         Stage stage = (Stage)searchButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -72,7 +72,7 @@ public class SearchAmongPlayers {
 
     @FXML
     private void countrywiseButtonPressed(ActionEvent event) throws IOException{
-        TreeMap<String, Integer> counter = sample.SearchPlayers.countryCount(Main.playerList);
+        TreeMap<String, Integer> counter = sample.SearchPlayers.countryCount(Main.currentClub.getPlayers());
         Stage stage = (Stage)countrywiseButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/CountrywiseTable.fxml"));

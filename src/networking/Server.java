@@ -1,8 +1,11 @@
 package networking;
 
+import sample.Club;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Server {
@@ -12,14 +15,15 @@ public class Server {
     List<sample.Player> playerList;
     List<sample.Club> clubList;
     List<sample.Player> transferList;
-    List<NetworkUtil> clientList;
+    HashMap<NetworkUtil, Club> clientMap;
     private ServerSocket serverSocket;
 
     public Server(){
         try{
-            clientList = new ArrayList<>();
+            clientMap = new HashMap<>();
             playerList = sample.IOControl.readFromFile(INPUT_FILE_NAME);
             clubList = sample.Club.createClubList(playerList);
+            transferList = new ArrayList<>();
             serverSocket = new ServerSocket(33333);
             while(true){
                 Socket clientSocket = serverSocket.accept();
@@ -27,7 +31,6 @@ public class Server {
                 serve(clientSocket);
             }
         }catch(Exception e) {
-            System.out.println("hello");
             System.out.println(e);
         }
     }
@@ -36,7 +39,7 @@ public class Server {
         NetworkUtil networkUtil = null;
         try{
             networkUtil = new NetworkUtil(clientSocket);
-            clientList.add(networkUtil);
+            //clientList.add(networkUtil);
         }catch (Exception e){
             System.out.println("NetworkUtil Creation Failed");
             System.out.println(e);

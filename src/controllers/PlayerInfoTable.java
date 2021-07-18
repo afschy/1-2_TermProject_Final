@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.Player;
 
@@ -28,15 +27,7 @@ public class PlayerInfoTable {
     private Button backButton;
 
     public void load(List<Player> searchResult) {
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
-        ageCol.setCellValueFactory(new PropertyValueFactory<>("age"));
-        heightCol.setCellValueFactory(new PropertyValueFactory<>("height"));
-        clubNameCol.setCellValueFactory(new PropertyValueFactory<>("clubName"));
-        positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
-        jerseyNumberCol.setCellValueFactory(new PropertyValueFactory<>("jerseyNumber"));
-        salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
-
+        sample.UIUpdater.fillTableColumns(nameCol, countryCol, ageCol, heightCol, clubNameCol, positionCol, jerseyNumberCol, salaryCol);
         ObservableList<Player> data = FXCollections.observableArrayList(searchResult);
         tableView.setItems(data);
         counter.setText(searchResult.size() + " player(s) found");

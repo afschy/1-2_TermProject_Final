@@ -24,12 +24,18 @@ public class ReadThreadClient implements Runnable{
                     System.out.println("Login request received");
                     LoginAnswer loginAnswer = (LoginAnswer) o;
                     if(loginAnswer.getStatus()){
-                        parentClient.parentMain.login(loginAnswer.getClub());
+                        parentClient.parentUI.login(loginAnswer.getClub());
                     }
                     else{
-                        parentClient.parentMain.loginFailed();
+                        parentClient.parentUI.loginFailed();
                     }
                     System.out.println("Login answer sent");
+                }
+
+                else if(o instanceof TransferListAnswer){
+                    System.out.println("Transfer list answer received");
+                    TransferListAnswer transferListAnswer = (TransferListAnswer) o;
+                    parentClient.parentUI.initTransferList(transferListAnswer.getTransferList(), transferListAnswer.getClub());
                 }
             }
         }catch (Exception e){

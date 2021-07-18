@@ -27,12 +27,19 @@ public class ReadThreadServer implements Runnable{
                         if(c.getName().equalsIgnoreCase(loginMessage.getClubName())){
                             networkUtil.write(new LoginAnswer(new sample.Club(c), true));
                             flag = true;
+                            parent.clientMap.put(networkUtil, c);
                             //System.out.println("true");
                             break;
                         }
                     }
                     if(!flag)
                         networkUtil.write(new LoginAnswer(null, false));
+                }
+
+                else if(o instanceof TransferListRequest){
+                    TransferListRequest request = (TransferListRequest)o;
+                    sample.Club relevantClub = sample.SearchClubs.getRelevantClub(parent.clubList, request.getClubName());
+                    networkUtil.write(new TransferListAnswer(parent.transferList, relevantClub));
                 }
             }
         }catch(Exception e){

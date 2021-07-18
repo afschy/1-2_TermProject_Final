@@ -1,19 +1,20 @@
 package controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import messages.LoginRequest;
+import messages.TransferListRequest;
 import sample.Main;
 
 import java.io.IOException;
 
 public class Home {
     @FXML
-    private Button button1, button2, button3, button4, logOutButton;
+    private Button button1, button2, button3, button4, logOutButton, transferButton;
 
     @FXML
     private void startSearchAmongPlayers() throws IOException {
@@ -55,12 +56,23 @@ public class Home {
     }
 
     @FXML
-    private void logOutButtonPressed()throws Exception{
+    private void logOutButtonPressed() throws Exception{
         Stage stage = (Stage)logOutButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         stage.setTitle("Football Player Database System - Login");
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
+    }
+
+    @FXML
+    private void transferButtonPressed(){
+        try{
+            Main.client.getNetworkUtil().write(new TransferListRequest(sample.Main.currentClub.getName()));
+            TransferTable.isRunning = true;
+        }catch(Exception e){
+            System.out.println("Transfer request sending failed");
+            System.out.println(e);
+        }
     }
 }

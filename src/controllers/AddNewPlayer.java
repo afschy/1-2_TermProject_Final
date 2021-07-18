@@ -13,9 +13,8 @@ import sample.Club;
 import sample.Main;
 import sample.Player;
 import java.io.IOException;
+import java.util.List;
 import sample.AddPlayer;
-
-import static sample.Main.playerList;
 
 public class AddNewPlayer {
     @FXML
@@ -38,6 +37,7 @@ public class AddNewPlayer {
         String name, country, clubName, position;
         int age, jerseyNumber;
         double height, salary;
+        List<Player> playerList = Main.currentClub.getPlayers();
         Player playerToAdd = new Player();
 
         name = sample.IOControl.formatName(nameField.getText());

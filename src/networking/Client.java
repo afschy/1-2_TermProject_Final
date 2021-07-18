@@ -1,16 +1,16 @@
 package networking;
 
-import sample.Main;
+import sample.UIUpdater;
 
 public class Client {
     NetworkUtil networkUtil;
     ReadThreadClient readThread;
-    sample.Main parentMain;
+    sample.UIUpdater parentUI;
 
-    public Client(String address, int port, Main parentMain){
+    public Client(String address, int port, UIUpdater parentUI){
         try{
             networkUtil = new NetworkUtil(address, port);
-            this.parentMain = parentMain;
+            this.parentUI = parentUI;
             readThread = new ReadThreadClient(networkUtil, this);
         }catch(Exception e){
             System.out.println(e);
@@ -29,10 +29,10 @@ public class Client {
     public void setReadThread(ReadThreadClient readThread) {
         this.readThread = readThread;
     }
-    public Main getParentMain() {
-        return parentMain;
+    public UIUpdater getParentUI() {
+        return parentUI;
     }
-    public void setParentMain(Main parentMain) {
-        this.parentMain = parentMain;
+    public void setParentUI(UIUpdater parentUI) {
+        this.parentUI = parentUI;
     }
 }
