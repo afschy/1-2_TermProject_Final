@@ -29,11 +29,11 @@ public class ReadThreadClient implements Runnable{
                     else{
                         parentClient.parentUI.loginFailed();
                     }
-                    System.out.println("Login answer sent");
+                    //System.out.println("Login answer sent");
                 }
 
                 else if(o instanceof TransferListAnswer){
-                    System.out.println("Transfer list answer received");
+                    //System.out.println("Transfer list answer received");
                     TransferListAnswer transferListAnswer = (TransferListAnswer) o;
                     parentClient.parentUI.initTransferList(transferListAnswer.getTransferList(), transferListAnswer.getClub());
                 }

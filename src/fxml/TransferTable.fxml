@@ -40,7 +40,7 @@
             <TableColumn fx:id="salaryColOwn" prefWidth="154.4000244140625" text="Salary" />
          </columns>
       </TableView>
-      <Label layoutX="394.0" layoutY="290.0" text="Transfer List:">
+      <Label layoutX="315.0" layoutY="283.0" text="Transfer List:">
          <font>
             <Font size="20.0" />
          </font>
@@ -57,12 +57,12 @@
             <TableColumn fx:id="salaryCol" prefWidth="152.800048828125" text="Salary" />
          </columns>
       </TableView>
-      <Button fx:id="sellButton" layoutX="13.0" layoutY="253.0" mnemonicParsing="false" text="Sell Player">
+      <Button fx:id="sellButton" layoutX="13.0" layoutY="253.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell Player">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buyButton" layoutX="14.0" layoutY="661.0" mnemonicParsing="false" text="Buy Player">
+      <Button fx:id="buyButton" layoutX="14.0" layoutY="661.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy Player">
          <font>
             <Font size="14.0" />
          </font>

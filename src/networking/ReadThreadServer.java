@@ -1,6 +1,9 @@
 package networking;
 
 import messages.*;
+import sample.Club;
+
+import java.util.Map;
 
 public class ReadThreadServer implements Runnable{
     private Thread thr;
@@ -40,6 +43,29 @@ public class ReadThreadServer implements Runnable{
                     TransferListRequest request = (TransferListRequest)o;
                     sample.Club relevantClub = sample.SearchClubs.getRelevantClub(parent.clubList, request.getClubName());
                     networkUtil.write(new TransferListAnswer(parent.transferList, relevantClub));
+                }
+
+                else if(o instanceof SellRequest){
+                    SellRequest sellRequest = (SellRequest) o;
+                    sample.Club relevantClub = sample.SearchClubs.getRelevantClub(parent.clubList,
+                            sellRequest.getPlayerToSell().getClubName());
+                    parent.transferList.add(sellRequest.getPlayerToSell());
+
+                    for(Map.Entry element: parent.clientMap.entrySet()){
+                        NetworkUtil destination = (NetworkUtil) element.getKey();
+                        Club club = (Club) element.getValue();
+                        try {
+                            destination.write(new TransferListAnswer(parent.transferList, club));
+                        }catch (Exception e){
+                            System.out.println(e);
+                        }
+                    }
+                }
+
+                else if(o instanceof BuyRequest){
+                    System.out.println("Buy request received");
+                    BuyRequest buyRequest = (BuyRequest) o;
+                    parent.transfer(buyRequest.getPlayerToBuy(), buyRequest.getBuyerClubName());
                 }
             }
         }catch(Exception e){

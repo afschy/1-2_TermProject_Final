@@ -6,11 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import messages.BuyRequest;
+import messages.SellRequest;
 import sample.Main;
 import sample.Player;
 import java.io.IOException;
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class TransferTable {
     @FXML
-    private TableView tableViewOwn, tableViewTransfer;
+    private TableView<Player> tableViewOwn, tableViewTransfer;
     @FXML
     private TableColumn<Player, String> nameColOwn, countryColOwn, ageColOwn, heightColOwn, clubNameColOwn,
             positionColOwn, jerseyNumberColOwn, salaryColOwn;
@@ -58,5 +57,35 @@ public class TransferTable {
         stage.setTitle("Football Player Database System - Home");
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void sellButtonPressed(){
+        Player selectedPlayer = tableViewOwn.getSelectionModel().getSelectedItem();
+        try{
+            Main.client.getNetworkUtil().write(new SellRequest(new Player(selectedPlayer)));
+        }catch(Exception e){
+            System.out.println("Sell request sending failed");
+            System.out.println(e);
+        }
+    }
+
+    @FXML
+    private void buyButtonPressed(){
+        Player selectedPlayer = tableViewTransfer.getSelectionModel().getSelectedItem();
+        if(selectedPlayer.getClubName().equalsIgnoreCase(Main.currentClub.getName())){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR: Buy Request Failed");
+            alert.setHeaderText("Cannot Buy Own Player");
+            alert.showAndWait();
+        }
+        else{
+            try{
+                Main.client.getNetworkUtil().write(new BuyRequest(new Player(selectedPlayer), Main.currentClub.getName()));
+            }catch(Exception e){
+                System.out.println("Buy request sending failed");
+                System.out.println(e);
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package sample;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Player implements Serializable {
     private String name;
@@ -105,7 +106,16 @@ public class Player implements Serializable {
         return info.toString();
     }
 
-    public boolean equals(Player player2){
-        return name.equalsIgnoreCase(player2.name);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return Objects.equals(getName(), player.getName()) && Objects.equals(getClubName(), player.getClubName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getClubName());
     }
 }
