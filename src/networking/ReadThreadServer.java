@@ -63,7 +63,7 @@ public class ReadThreadServer implements Runnable{
                 }
 
                 else if(o instanceof BuyRequest){
-                    System.out.println("Buy request received");
+                    //System.out.println("Buy request received");
                     BuyRequest buyRequest = (BuyRequest) o;
                     parent.transfer(buyRequest.getPlayerToBuy(), buyRequest.getBuyerClubName());
                 }

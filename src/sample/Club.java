@@ -57,7 +57,8 @@ public class Club implements Serializable {
             for(Club c : clubList){
                 if(c.getName().equalsIgnoreCase(p.getClubName())){
                     flag = false;
-                    c.addPlayer(p);
+                    //c.addPlayer(p);
+                    c.getPlayers().add(p);
                 }
             }
             if(flag)

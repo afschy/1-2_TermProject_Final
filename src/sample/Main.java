@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import networking.Client;
 
 public class Main extends Application{
-    public static networking.Client client;
+    public static Client client;
     public static Club currentClub;
     public static List<Player> transferList;
     Stage stage;

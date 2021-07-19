@@ -21,7 +21,7 @@ public class ReadThreadClient implements Runnable{
                 Object o = networkUtil.read();
 
                 if(o instanceof LoginAnswer){
-                    System.out.println("Login request received");
+                    //System.out.println("Login request received");
                     LoginAnswer loginAnswer = (LoginAnswer) o;
                     if(loginAnswer.getStatus()){
                         parentClient.parentUI.login(loginAnswer.getClub());
@@ -39,7 +39,7 @@ public class ReadThreadClient implements Runnable{
                 }
             }
         }catch (Exception e){
-            System.out.println("Client read thread error");
+            //System.out.println("Client read thread error");
             System.out.println(e);
         }
     }

@@ -19,7 +19,7 @@ public class Login {
         LoginRequest loginRequest = new LoginRequest(name);
         try{
             client.getNetworkUtil().write(loginRequest);
-            System.out.println("Login Request sent");
+            //System.out.println("Login Request sent");
         }catch (Exception e){
             System.out.println("Login request sending failed");
             System.out.println(e);
