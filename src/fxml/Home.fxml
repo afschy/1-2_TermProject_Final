@@ -15,12 +15,12 @@
       </Label>
       <VBox layoutX="134.0" layoutY="101.0" prefHeight="375.0" prefWidth="331.0" spacing="20.0">
          <children>
-            <Button fx:id="button1" mnemonicParsing="false" onAction="#startSearchAmongPlayers" prefHeight="43.0" prefWidth="334.0" text="Search Among Players">
+            <Button fx:id="button1" mnemonicParsing="false" onAction="#startSearchAmongPlayers" prefHeight="43.0" prefWidth="334.0" text="Search For Players">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button2" mnemonicParsing="false" onAction="#startSearchAmongClubs" prefHeight="43.0" prefWidth="334.0" text="Search Among Clubs">
+            <Button fx:id="button2" mnemonicParsing="false" onAction="#startSearchAmongClubs" prefHeight="43.0" prefWidth="334.0" text="Search in the Club">
                <font>
                   <Font size="20.0" />
                </font>
