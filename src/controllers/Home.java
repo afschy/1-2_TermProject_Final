@@ -11,6 +11,7 @@ import messages.TransferListRequest;
 import sample.Main;
 
 import java.io.IOException;
+import java.util.TreeMap;
 
 public class Home {
     @FXML
@@ -37,12 +38,18 @@ public class Home {
     }
 
     @FXML
-    private void startAddNewPlayer() throws IOException {
+    private void startCountryWiseList() throws IOException {
+        TreeMap<String, Integer> counter = sample.SearchPlayers.countryCount(Main.currentClub.getPlayers());
         Stage stage = (Stage)button3.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/AddNewPlayer.fxml"));
-        stage.setTitle("Football Player Database System - Add New Player");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/CountrywiseTable.fxml"));
+        Parent root = loader.load();
+
+        CountrywiseTable controller = loader.getController();
+        controller.load(counter);
+
+        stage.setTitle("Country-wise Player Count");
         stage.setScene(new Scene(root));
-        //stage.setResizable(false);
         stage.show();
     }
 

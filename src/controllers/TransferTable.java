@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import messages.BuyRequest;
 import messages.SellRequest;
@@ -22,7 +23,7 @@ public class TransferTable {
     private TableColumn<Player, String> nameColOwn, countryColOwn, ageColOwn, heightColOwn, clubNameColOwn,
             positionColOwn, jerseyNumberColOwn, salaryColOwn;
     @FXML
-    private TableColumn<Player, String> nameCol,countryCol,ageCol,heightCol,clubNameCol,positionCol,jerseyNumberCol,salaryCol;
+    private TableColumn<Player, String> nameCol,countryCol,ageCol,heightCol,clubNameCol,positionCol,jerseyNumberCol,salaryCol,priceCol;
     @FXML
     private Button backButton, sellButton, buyButton;
     @FXML
@@ -45,6 +46,7 @@ public class TransferTable {
 
     public void loadTransfer(List<Player> transferList) {
         sample.UIUpdater.fillTableColumns(nameCol, countryCol, ageCol, heightCol, clubNameCol, positionCol, jerseyNumberCol, salaryCol);
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         ObservableList<Player> data = FXCollections.observableArrayList(transferList);
         tableViewTransfer.setItems(data);
     }
@@ -60,8 +62,19 @@ public class TransferTable {
     }
 
     @FXML
-    private void sellButtonPressed(){
+    private void sellButtonPressed() throws Exception{
         Player selectedPlayer = tableViewOwn.getSelectionModel().getSelectedItem();
+
+        Stage priceStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/PriceWindow.fxml"));
+        Parent root = loader.load();
+        PriceWindow controller = loader.getController();
+        controller.setPlayer(selectedPlayer);
+        priceStage.setTitle("Price Getter");
+        priceStage.setScene(new Scene(root));
+        priceStage.showAndWait();
+
         try{
             Main.client.getNetworkUtil().write(new SellRequest(new Player(selectedPlayer)));
         }catch(Exception e){

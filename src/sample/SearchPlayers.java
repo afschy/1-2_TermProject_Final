@@ -1,83 +1,11 @@
 package sample;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.TreeMap;
 
 public class SearchPlayers {
-    public static void initMenu(List<Player> playerList){
-        while(true){
-            System.out.println("Player Searching Options:");
-            System.out.println("(1) By Player Name");
-            System.out.println("(2) By Club and Country");
-            System.out.println("(3) By Position");
-            System.out.println("(4) By Salary Range");
-            System.out.println("(5) Country-wise player count");
-            System.out.println("(6) Back to Main Menu");
-
-            Scanner scn = new Scanner(System.in);
-            int userInput = scn.nextInt();
-            scn.nextLine();
-
-            if(userInput == 1){
-                System.out.print("Enter the name of the player: ");
-                String name = IOControl.formatName(scn.nextLine());
-                List<Player> searchResult = searchByName(playerList,name);
-                if(searchResult == null) System.out.println("No such player with this name");
-                else {
-                    System.out.println(searchResult.size() + " match(es) found\n");
-                    for (Player p : searchResult) System.out.println(p);
-                }
-            }
-            else if(userInput == 2){
-                System.out.print("Enter the name of the country: ");
-                String countryName = IOControl.formatName(scn.nextLine());
-                System.out.print("Enter the name of the club: ");
-                String clubName = IOControl.formatName(scn.nextLine());
-                List<Player> searchResult = searchByCountryAndClub(playerList, countryName, clubName);
-                if(searchResult == null) System.out.println("No such player with this country and club");
-                else {
-                    System.out.println(searchResult.size() + " match(es) found\n");
-                    for (Player p : searchResult) System.out.println(p);
-                }
-            }
-            else if(userInput == 3){
-                System.out.print("Enter the name of the position: ");
-                String position = IOControl.formatName(scn.nextLine());
-                List<Player> searchResult = searchByPosition(playerList, position);
-                if(searchResult == null) System.out.println("No such player with this position");
-                else {
-                    System.out.println(searchResult.size() + " match(es) found\n");
-                    for (Player p : searchResult) System.out.println(p);
-                }
-            }
-            else if(userInput == 4){
-                System.out.print("Enter Lower Bound and Upper Bound in order: ");
-                double lowerBound;
-                double upperBound;
-                try{
-                    lowerBound = scn.nextDouble();
-                    upperBound = scn.nextDouble();
-                }catch (Exception e){
-                    System.out.println("ERROR: Invalid input");
-                    continue;
-                }
-                scn.nextLine();
-                List<Player> searchResult = searchBySalary(playerList, lowerBound, upperBound);
-                if(searchResult == null) System.out.println("No such player within this weekly salary range");
-                else {
-                    System.out.println(searchResult.size() + " match(es) found\n");
-                    for (Player p : searchResult) System.out.println(p);
-                }
-            }
-            else if(userInput == 5){
-                TreeMap<String,Integer> counter = countryCount(playerList);
-                for(Map.Entry<String, Integer> hash : counter.entrySet())
-                    System.out.println(hash.getKey() + " has " + hash.getValue() + " player(s)");
-            }
-            else if(userInput == 6) return;
-            else System.out.println("Invalid Command");
-        }
-    }
-
     public static List<Player> searchByName(List<Player> playerList, String queryName) {
         List<Player> result = new ArrayList<>();
         for (Player p : playerList) {

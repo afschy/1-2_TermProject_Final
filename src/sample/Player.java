@@ -12,6 +12,7 @@ public class Player implements Serializable {
     private String position;
     private int jerseyNumber;
     private double salary;
+    private double price;
 
     public Player(String info){
         //For creating a player directly from file input
@@ -36,6 +37,7 @@ public class Player implements Serializable {
         position = player2.position;
         jerseyNumber = player2.jerseyNumber;
         salary = player2.salary;
+        price = player2.price;
     }
 
     public String getName() {
@@ -93,6 +95,9 @@ public class Player implements Serializable {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
     public String toString(){
         StringBuffer info = new StringBuffer("Name: " + name + "\n");

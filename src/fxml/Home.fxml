@@ -25,7 +25,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button3" mnemonicParsing="false" onAction="#startAddNewPlayer" prefHeight="43.0" prefWidth="346.0" text="Add New Player">
+            <Button fx:id="button3" mnemonicParsing="false" onAction="#startCountryWiseList" prefHeight="43.0" prefWidth="346.0" text="Show Country-wise Player Count">
                <font>
                   <Font size="20.0" />
                </font>
