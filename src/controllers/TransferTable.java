@@ -87,7 +87,16 @@ public class TransferTable {
 
     @FXML
     private void sellButtonPressed() throws Exception{
-        Player selectedPlayer = new Player(tableViewOwn.getSelectionModel().getSelectedItem());
+        Player selectedPlayer;
+        try{
+            selectedPlayer = new Player(tableViewOwn.getSelectionModel().getSelectedItem());
+        }catch(NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR: Sell Request Failed");
+            alert.setHeaderText("No Player Selected");
+            alert.showAndWait();
+            return;
+        }
 
         Stage priceStage = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -109,7 +118,17 @@ public class TransferTable {
 
     @FXML
     private void buyButtonPressed(){
-        Player selectedPlayer = new Player(tableViewTransfer.getSelectionModel().getSelectedItem());
+        Player selectedPlayer;
+        try{
+            selectedPlayer = new Player(tableViewTransfer.getSelectionModel().getSelectedItem());
+        }catch(NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR: Buy Request Failed");
+            alert.setHeaderText("No Player Selected");
+            alert.showAndWait();
+            return;
+        }
+
         if(selectedPlayer.getClubName().equalsIgnoreCase(Main.currentClub.getName())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR: Buy Request Failed");
