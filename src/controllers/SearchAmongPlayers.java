@@ -26,7 +26,7 @@ public class SearchAmongPlayers {
     private void backButtonPressed(ActionEvent event) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
-        stage.setTitle("Football Player Database System - Home");
+        stage.setTitle(Main.currentClub.getName());
         stage.setScene(new Scene(root));
         //stage.setResizable(false);
         stage.show();

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class UIUpdater {
             } catch (Exception e) {
                 System.out.println(e);
             }
-            stage.setTitle("Football Player Database System - Home");
+            stage.setTitle(Main.currentClub.getName());
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.show();
@@ -64,17 +65,19 @@ public class UIUpdater {
                 TransferTable controller = loader.getController();
                 controller.initialize(receivedList);
 
-                stage.setTitle("Transfer Window");
+                stage.setTitle("Transfer Window - " + Main.currentClub.getName());
                 stage.setScene(new Scene(root));
+                stage.setResizable(true);
                 stage.show();
             }
         });
     }
 
-    public static void fillTableColumns(TableColumn<Player, String> nameCol, TableColumn<Player, String> countryCol,
-                                   TableColumn<Player, String> ageCol, TableColumn<Player, String> heightCol,
-                                   TableColumn<Player, String> clubNameCol, TableColumn<Player, String> positionCol,
-                                   TableColumn<Player, String> jerseyNumberCol, TableColumn<Player, String> salaryCol) {
+    public static void fillTableColumns(TableColumn<PlayerWithImage, String> nameCol, TableColumn<PlayerWithImage, String> countryCol,
+                                        TableColumn<PlayerWithImage, String> ageCol, TableColumn<PlayerWithImage, String> heightCol,
+                                        TableColumn<PlayerWithImage, String> clubNameCol, TableColumn<PlayerWithImage, String> positionCol,
+                                        TableColumn<PlayerWithImage, String> jerseyNumberCol, TableColumn<PlayerWithImage, String> salaryCol,
+                                        TableColumn<PlayerWithImage, ImageView> imageViewCol) {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
         ageCol.setCellValueFactory(new PropertyValueFactory<>("age"));
@@ -83,5 +86,7 @@ public class UIUpdater {
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
         jerseyNumberCol.setCellValueFactory(new PropertyValueFactory<>("jerseyNumber"));
         salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        imageViewCol.setCellValueFactory(new PropertyValueFactory<>("imageView"));
+        imageViewCol.setPrefWidth(120);
     }
 }

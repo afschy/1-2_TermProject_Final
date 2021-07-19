@@ -33,11 +33,21 @@ public class Player implements Serializable {
         age = player2.age;
         height = player2.height;
         clubName = player2.clubName;
-        position = player2.clubName;
         position = player2.position;
         jerseyNumber = player2.jerseyNumber;
         salary = player2.salary;
         price = player2.price;
+    }
+    public Player(PlayerWithImage player2){
+        name = player2.getName();
+        country = player2.getCountry();
+        age = player2.getAge();
+        height = player2.getHeight();
+        clubName = player2.getClubName();
+        position = player2.getPosition();
+        jerseyNumber = player2.getJerseyNumber();
+        salary = player2.getSalary();
+        price = player2.getPrice();
     }
 
     public String getName() {

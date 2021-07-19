@@ -30,7 +30,7 @@ public class Server {
             serverSocket = new ServerSocket(33333);
             while(true){
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Connected");
+                //System.out.println("Connected");
                 serve(clientSocket);
             }
         }catch(Exception e) {
@@ -52,11 +52,11 @@ public class Server {
 
     synchronized void transfer(Player playerToTransfer, String buyerName){
         if(!transferList.contains(playerToTransfer)){
-            System.out.println("Players isn't available for transfer");
+            //System.out.println("Players isn't available for transfer");
             return;
         }
 
-        System.out.println("In transfer function");
+        //System.out.println("In transfer function");
         Club seller = sample.SearchClubs.getRelevantClub(clubList, playerToTransfer.getClubName());
         Club buyer = sample.SearchClubs.getRelevantClub(clubList, buyerName);
         transferList.remove(playerToTransfer);

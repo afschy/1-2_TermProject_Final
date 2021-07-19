@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TransferTable">
+<AnchorPane prefHeight="773.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TransferTable">
    <children>
       <Label fx:id="header" layoutX="315.0" layoutY="18.0" prefHeight="32.0" prefWidth="269.0" text="Players in Manchester United:" textAlignment="CENTER">
          <font>
@@ -28,42 +28,44 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tableViewOwn" layoutX="14.0" layoutY="60.0" prefHeight="187.0" prefWidth="874.0">
+      <TableView fx:id="tableViewOwn" layoutX="14.0" layoutY="60.0" prefHeight="290.0" prefWidth="926.0">
          <columns>
-            <TableColumn fx:id="nameColOwn" prefWidth="158.39998817443848" text="Name" />
-            <TableColumn fx:id="countryColOwn" prefWidth="121.60003662109375" text="Country" />
-            <TableColumn fx:id="ageColOwn" prefWidth="51.199951171875" text="Age" />
-            <TableColumn fx:id="heightColOwn" prefWidth="56.0" text="Height" />
-            <TableColumn fx:id="clubNameColOwn" prefWidth="166.40011596679688" text="Club Name" />
-            <TableColumn fx:id="positionColOwn" prefWidth="101.60003662109375" text="Position" />
-            <TableColumn fx:id="jerseyNumberColOwn" prefWidth="55.199951171875" text="Number" />
-            <TableColumn fx:id="salaryColOwn" prefWidth="154.4000244140625" text="Salary" />
+            <TableColumn fx:id="nameColOwn" prefWidth="115.20000648498535" text="Name" />
+            <TableColumn fx:id="countryColOwn" prefWidth="129.60000610351562" text="Country" />
+            <TableColumn fx:id="ageColOwn" prefWidth="71.20001220703125" text="Age" />
+            <TableColumn fx:id="heightColOwn" prefWidth="72.79998779296875" text="Height" />
+            <TableColumn fx:id="clubNameColOwn" prefWidth="127.20004272460938" text="Club Name" />
+            <TableColumn fx:id="positionColOwn" prefWidth="93.60003662109375" text="Position" />
+            <TableColumn fx:id="jerseyNumberColOwn" prefWidth="78.40008544921875" text="Number" />
+            <TableColumn fx:id="salaryColOwn" prefWidth="91.20001220703125" text="Salary" />
+            <TableColumn fx:id="imageViewColOwn" prefWidth="120.0" text="Image" />
          </columns>
       </TableView>
-      <Label layoutX="315.0" layoutY="283.0" text="Transfer List:">
+      <Label layoutX="315.0" layoutY="387.0" text="Transfer List:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="tableViewTransfer" layoutX="13.0" layoutY="332.0" prefHeight="318.0" prefWidth="874.0">
+      <TableView fx:id="tableViewTransfer" layoutX="13.0" layoutY="417.0" prefHeight="306.0" prefWidth="926.0">
          <columns>
-            <TableColumn fx:id="nameCol" prefWidth="158.39998817443848" text="Name" />
-            <TableColumn fx:id="countryCol" prefWidth="103.20001220703125" text="Country" />
-            <TableColumn fx:id="ageCol" prefWidth="70.4000244140625" text="Age" />
-            <TableColumn fx:id="heightCol" prefWidth="56.0" text="Height" />
-            <TableColumn fx:id="clubNameCol" prefWidth="128.00003051757812" text="Club Name" />
-            <TableColumn fx:id="positionCol" prefWidth="78.4000244140625" text="Position" />
-            <TableColumn fx:id="jerseyNumberCol" prefWidth="59.20001220703125" text="Number" />
-            <TableColumn fx:id="salaryCol" prefWidth="106.4000244140625" text="Salary" />
-            <TableColumn fx:id="priceCol" prefWidth="100.8001708984375" text="Price" />
+            <TableColumn fx:id="nameCol" prefWidth="112.00000190734863" text="Name" />
+            <TableColumn fx:id="countryCol" prefWidth="94.39998626708984" text="Country" />
+            <TableColumn fx:id="ageCol" prefWidth="76.79998779296875" text="Age" />
+            <TableColumn fx:id="heightCol" prefWidth="87.199951171875" text="Height" />
+            <TableColumn fx:id="clubNameCol" prefWidth="90.4000244140625" text="Club Name" />
+            <TableColumn fx:id="positionCol" prefWidth="76.00003051757812" text="Position" />
+            <TableColumn fx:id="jerseyNumberCol" prefWidth="71.199951171875" text="Number" />
+            <TableColumn fx:id="salaryCol" prefWidth="81.60009765625" text="Salary" />
+            <TableColumn fx:id="priceCol" prefWidth="89.5999755859375" text="Price" />
+            <TableColumn fx:id="imageViewCol" prefWidth="120.0" text="Image" />
          </columns>
       </TableView>
-      <Button fx:id="sellButton" layoutX="13.0" layoutY="253.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell Player">
+      <Button fx:id="sellButton" layoutX="12.0" layoutY="357.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell Player">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buyButton" layoutX="14.0" layoutY="661.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy Player">
+      <Button fx:id="buyButton" layoutX="11.0" layoutY="733.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy Player">
          <font>
             <Font size="14.0" />
          </font>

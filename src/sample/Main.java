@@ -14,15 +14,14 @@ public class Main extends Application{
     public static List<Player> transferList;
     Stage stage;
 
-    public static void main(String[] args){
-        launch(args);
-    }
+    public static void main(String[] args){ launch(args); }
 
     public void start(Stage primaryStage) throws Exception{
         try{
             client = new Client("127.0.0.1", 33333, new UIUpdater(primaryStage));
         }catch (Exception e){
             System.out.println("Client creation failed");
+            System.out.println(e);
         }
 
         stage = primaryStage;

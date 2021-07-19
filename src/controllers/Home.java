@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import messages.LoginRequest;
 import messages.TransferListRequest;
 import sample.Main;
 
@@ -21,7 +20,7 @@ public class Home {
     private void startSearchAmongPlayers() throws IOException {
         Stage stage = (Stage)button1.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SearchAmongPlayers.fxml"));
-        stage.setTitle("Football Player Database System - Search Among Players");
+        stage.setTitle("Search Players - " + Main.currentClub.getName());
         stage.setScene(new Scene(root));
         //stage.setResizable(false);
         stage.show();
@@ -31,7 +30,7 @@ public class Home {
     private void startSearchAmongClubs() throws IOException {
         Stage stage = (Stage)button2.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SearchAmongClubs.fxml"));
-        stage.setTitle("Football Player Database System - Search Among Clubs");
+        stage.setTitle("Search in Club - " + Main.currentClub.getName());
         stage.setScene(new Scene(root));
         //stage.setResizable(false);
         stage.show();
@@ -48,7 +47,7 @@ public class Home {
         CountrywiseTable controller = loader.getController();
         controller.load(counter);
 
-        stage.setTitle("Country-wise Player Count");
+        stage.setTitle("Country-wise Player Count - " + Main.currentClub.getName());
         stage.setScene(new Scene(root));
         stage.show();
     }

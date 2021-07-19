@@ -20,7 +20,7 @@ public class Club implements Serializable {
         players = new ArrayList<>();
     }
     public Club(Club club2){
-        name = new String(club2.name);
+        name = club2.name;
         players = new ArrayList<>();
         for(Player p : club2.players)
             players.add(p);

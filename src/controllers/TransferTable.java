@@ -8,22 +8,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import messages.BuyRequest;
 import messages.SellRequest;
 import sample.Main;
 import sample.Player;
+import sample.PlayerWithImage;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransferTable {
     @FXML
-    private TableView<Player> tableViewOwn, tableViewTransfer;
+    private TableView<PlayerWithImage> tableViewOwn, tableViewTransfer;
     @FXML
-    private TableColumn<Player, String> nameColOwn, countryColOwn, ageColOwn, heightColOwn, clubNameColOwn,
+    private TableColumn<PlayerWithImage, String> nameColOwn, countryColOwn, ageColOwn, heightColOwn, clubNameColOwn,
             positionColOwn, jerseyNumberColOwn, salaryColOwn;
     @FXML
-    private TableColumn<Player, String> nameCol,countryCol,ageCol,heightCol,clubNameCol,positionCol,jerseyNumberCol,salaryCol,priceCol;
+    private TableColumn<PlayerWithImage, ImageView> imageViewColOwn;
+    @FXML
+    private TableColumn<PlayerWithImage, String> nameCol,countryCol,ageCol,heightCol,clubNameCol,positionCol,
+            jerseyNumberCol,salaryCol, priceCol;
+    @FXML
+    private TableColumn<PlayerWithImage, ImageView> imageViewCol;
     @FXML
     private Button backButton, sellButton, buyButton;
     @FXML
@@ -38,16 +47,31 @@ public class TransferTable {
     }
 
     public void loadOwn() {
+        List<PlayerWithImage> list = new ArrayList<>();
+        for(Player p: Main.currentClub.getPlayers()){
+            PlayerWithImage playerWithImage = new PlayerWithImage(p);
+            playerWithImage.initImage();
+            list.add(playerWithImage);
+        }
+
         sample.UIUpdater.fillTableColumns(nameColOwn, countryColOwn, ageColOwn, heightColOwn, clubNameColOwn,
-                positionColOwn, jerseyNumberColOwn, salaryColOwn);
-        ObservableList<Player> data = FXCollections.observableArrayList(Main.currentClub.getPlayers());
+                positionColOwn, jerseyNumberColOwn, salaryColOwn, imageViewColOwn);
+        ObservableList<PlayerWithImage> data = FXCollections.observableArrayList(list);
         tableViewOwn.setItems(data);
     }
 
     public void loadTransfer(List<Player> transferList) {
-        sample.UIUpdater.fillTableColumns(nameCol, countryCol, ageCol, heightCol, clubNameCol, positionCol, jerseyNumberCol, salaryCol);
+        List<PlayerWithImage> list = new ArrayList<>();
+        for(Player p: transferList){
+            PlayerWithImage playerWithImage = new PlayerWithImage(p);
+            playerWithImage.initImage();
+            list.add(playerWithImage);
+        }
+
+        sample.UIUpdater.fillTableColumns(nameCol, countryCol, ageCol, heightCol, clubNameCol, positionCol,
+                jerseyNumberCol, salaryCol, imageViewCol);
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-        ObservableList<Player> data = FXCollections.observableArrayList(transferList);
+        ObservableList<PlayerWithImage> data = FXCollections.observableArrayList(list);
         tableViewTransfer.setItems(data);
     }
 
@@ -56,14 +80,14 @@ public class TransferTable {
         isRunning = false;
         Stage stage = (Stage)backButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
-        stage.setTitle("Football Player Database System - Home");
+        stage.setTitle(Main.currentClub.getName());
         stage.setScene(new Scene(root));
         stage.show();
     }
 
     @FXML
     private void sellButtonPressed() throws Exception{
-        Player selectedPlayer = tableViewOwn.getSelectionModel().getSelectedItem();
+        Player selectedPlayer = new Player(tableViewOwn.getSelectionModel().getSelectedItem());
 
         Stage priceStage = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -85,7 +109,7 @@ public class TransferTable {
 
     @FXML
     private void buyButtonPressed(){
-        Player selectedPlayer = tableViewTransfer.getSelectionModel().getSelectedItem();
+        Player selectedPlayer = new Player(tableViewTransfer.getSelectionModel().getSelectedItem());
         if(selectedPlayer.getClubName().equalsIgnoreCase(Main.currentClub.getName())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR: Buy Request Failed");

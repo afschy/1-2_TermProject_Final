@@ -9,23 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayerInfoTable">
+<AnchorPane prefHeight="600.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PlayerInfoTable">
    <children>
       <Label layoutX="360.0" layoutY="26.0" text="Results:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="26.0" layoutY="120.0" prefHeight="461.0" prefWidth="751.0">
+      <TableView fx:id="tableView" layoutX="18.0" layoutY="120.0" prefHeight="462.0" prefWidth="878.0">
          <columns>
-            <TableColumn fx:id="nameCol" prefWidth="171.20001220703125" text="Name" />
-            <TableColumn fx:id="countryCol" prefWidth="67.199951171875" text="Country" />
+            <TableColumn fx:id="nameCol" prefWidth="164.8000431060791" text="Name" />
+            <TableColumn fx:id="countryCol" prefWidth="74.39993286132812" text="Country" />
             <TableColumn fx:id="ageCol" prefWidth="41.5999755859375" text="Age" />
-            <TableColumn fx:id="heightCol" prefWidth="76.0" text="Height" />
-            <TableColumn fx:id="clubNameCol" prefWidth="145.60003662109375" text="Club Name" />
-            <TableColumn fx:id="positionCol" prefWidth="86.39996337890625" text="Position" />
-            <TableColumn fx:id="jerseyNumberCol" prefWidth="70.4000244140625" text="Number" />
-            <TableColumn fx:id="salaryCol" prefWidth="86.39990234375" text="Salary" />
+            <TableColumn fx:id="heightCol" prefWidth="63.20001220703125" text="Height" />
+            <TableColumn fx:id="clubNameCol" prefWidth="137.5999755859375" text="Club Name" />
+            <TableColumn fx:id="positionCol" prefWidth="108.80007934570312" text="Position" />
+            <TableColumn fx:id="jerseyNumberCol" prefWidth="53.5999755859375" text="Number" />
+            <TableColumn fx:id="salaryCol" prefWidth="88.79998779296875" text="Salary" />
+            <TableColumn fx:id="imageViewCol" prefWidth="136.0" text="Image" />
          </columns></TableView>
       <Label fx:id="counter" layoutX="26.0" layoutY="69.0" prefHeight="30.0" prefWidth="394.0" text="Label" textAlignment="JUSTIFY">
          <font>

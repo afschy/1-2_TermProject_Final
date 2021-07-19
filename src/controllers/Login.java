@@ -3,13 +3,14 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import messages.LoginRequest;
 
 import static sample.Main.client;
 
 public class Login {
     @FXML
-    private Button logInButton;
+    private Button logInButton, exitButton;
     @FXML
     private TextField clubNameField;
 
@@ -24,5 +25,16 @@ public class Login {
             System.out.println("Login request sending failed");
             System.out.println(e);
         }
+    }
+
+    @FXML
+    private void exitButtonPressed(){
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        try{
+            sample.Main.client.getNetworkUtil().closeConnection();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        stage.close();
     }
 }

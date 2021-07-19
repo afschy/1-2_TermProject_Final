@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.Country;
+import sample.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class CountrywiseTable {
     private void backButtonPressed() throws Exception{
         Stage stage = (Stage)backButton.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
-        stage.setTitle("Football Player Database System - Home");
+        stage.setTitle(Main.currentClub.getName());
         stage.setScene(new Scene(root));
         stage.show();
     }
