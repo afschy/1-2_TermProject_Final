@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Login">
+<AnchorPane prefHeight="307.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Login">
    <children>
       <Label layoutX="55.0" layoutY="62.0" prefHeight="34.0" prefWidth="114.0" text="Club Name:">
          <font>
@@ -18,12 +18,12 @@
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button fx:id="logInButton" layoutX="254.0" layoutY="236.0" mnemonicParsing="false" onAction="#logInButtonPressed" prefHeight="43.0" prefWidth="92.0" text="Log In">
+      <Button fx:id="logInButton" layoutX="148.0" layoutY="200.0" mnemonicParsing="false" onAction="#logInButtonPressed" prefHeight="43.0" prefWidth="92.0" text="Log In">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="254.0" layoutY="302.0" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="43.0" prefWidth="92.0" text="Exit">
+      <Button fx:id="exitButton" layoutX="341.0" layoutY="200.0" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="43.0" prefWidth="92.0" text="Exit">
          <font>
             <Font size="20.0" />
          </font>

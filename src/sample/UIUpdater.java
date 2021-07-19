@@ -1,6 +1,5 @@
 package sample;
 
-import controllers.PlayerInfoTable;
 import controllers.TransferTable;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +29,7 @@ public class UIUpdater {
                 root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
             } catch (Exception e) {
                 System.out.println(e);
+                return;
             }
             stage.setTitle(Main.currentClub.getName());
             stage.setScene(new Scene(root));
