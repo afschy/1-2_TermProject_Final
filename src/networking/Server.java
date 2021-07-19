@@ -15,10 +15,10 @@ public class Server {
     public static final String INPUT_FILE_NAME = "players.txt";
     public static final String OUTPUT_FILE_NAME = "players.txt";
 
-    List<sample.Player> playerList;
-    List<sample.Club> clubList;
-    List<sample.Player> transferList;
-    HashMap<NetworkUtil, Club> clientMap;
+    volatile List<sample.Player> playerList;
+    volatile List<sample.Club> clubList;
+    volatile List<sample.Player> transferList;
+    volatile HashMap<NetworkUtil, Club> clientMap;
     private ServerSocket serverSocket;
 
     public Server(){

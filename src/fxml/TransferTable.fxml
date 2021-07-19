@@ -48,13 +48,14 @@
       <TableView fx:id="tableViewTransfer" layoutX="13.0" layoutY="332.0" prefHeight="318.0" prefWidth="874.0">
          <columns>
             <TableColumn fx:id="nameCol" prefWidth="158.39998817443848" text="Name" />
-            <TableColumn fx:id="countryCol" prefWidth="121.60003662109375" text="Country" />
-            <TableColumn fx:id="ageCol" prefWidth="51.199951171875" text="Age" />
+            <TableColumn fx:id="countryCol" prefWidth="103.20001220703125" text="Country" />
+            <TableColumn fx:id="ageCol" prefWidth="70.4000244140625" text="Age" />
             <TableColumn fx:id="heightCol" prefWidth="56.0" text="Height" />
-            <TableColumn fx:id="clubNameCol" prefWidth="166.40011596679688" text="Club Name" />
-            <TableColumn fx:id="positionCol" prefWidth="101.60003662109375" text="Position" />
-            <TableColumn fx:id="jerseyNumberCol" prefWidth="55.199951171875" text="Number" />
-            <TableColumn fx:id="salaryCol" prefWidth="152.800048828125" text="Salary" />
+            <TableColumn fx:id="clubNameCol" prefWidth="128.00003051757812" text="Club Name" />
+            <TableColumn fx:id="positionCol" prefWidth="78.4000244140625" text="Position" />
+            <TableColumn fx:id="jerseyNumberCol" prefWidth="59.20001220703125" text="Number" />
+            <TableColumn fx:id="salaryCol" prefWidth="106.4000244140625" text="Salary" />
+            <TableColumn fx:id="priceCol" prefWidth="100.8001708984375" text="Price" />
          </columns>
       </TableView>
       <Button fx:id="sellButton" layoutX="13.0" layoutY="253.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell Player">

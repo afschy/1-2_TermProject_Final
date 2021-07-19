@@ -24,8 +24,6 @@ public class SearchAmongClubs {
     private Button backButton, searchButton;
     @FXML
     private RadioButton radio1,radio2,radio3,radio4;
-    @FXML
-    private TextField nameField;
     private int radioStatus = 1;
 
     @FXML
@@ -48,7 +46,6 @@ public class SearchAmongClubs {
 
     @FXML
     private void searchButtonPressed(ActionEvent event) throws IOException {
-        String name = sample.IOControl.formatName(nameField.getText());
         Club relevantClub = Main.currentClub;
         if(relevantClub == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -88,7 +85,7 @@ public class SearchAmongClubs {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Yearly Salary");
-            alert.setHeaderText("Total yearly salary of all players in " + name);
+            alert.setHeaderText("Total yearly salary of all players in " + Main.currentClub.getName());
             alert.setContentText(text);
             alert.showAndWait();
         }

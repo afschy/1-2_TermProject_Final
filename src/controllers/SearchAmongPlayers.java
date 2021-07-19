@@ -18,7 +18,7 @@ import java.util.TreeMap;
 
 public class SearchAmongPlayers {
     @FXML
-    private Button backButton, searchButton, countrywiseButton;
+    private Button backButton, searchButton;
     @FXML
     private TextField nameField, countryField, clubField, posField, minField, maxField;
 
@@ -66,22 +66,6 @@ public class SearchAmongPlayers {
         controller.load(result);
 
         stage.setTitle("Search Results");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    @FXML
-    private void countrywiseButtonPressed(ActionEvent event) throws IOException{
-        TreeMap<String, Integer> counter = sample.SearchPlayers.countryCount(Main.currentClub.getPlayers());
-        Stage stage = (Stage)countrywiseButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/CountrywiseTable.fxml"));
-        Parent root = loader.load();
-
-        CountrywiseTable controller = loader.getController();
-        controller.load(counter);
-
-        stage.setTitle("Country-wise Player Count");
         stage.setScene(new Scene(root));
         stage.show();
     }
