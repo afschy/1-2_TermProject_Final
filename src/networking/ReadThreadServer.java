@@ -47,8 +47,8 @@ public class ReadThreadServer implements Runnable{
 
                 else if(o instanceof SellRequest){
                     SellRequest sellRequest = (SellRequest) o;
-                    sample.Club relevantClub = sample.SearchClubs.getRelevantClub(parent.clubList,
-                            sellRequest.getPlayerToSell().getClubName());
+                    if(parent.transferList.contains(sellRequest.getPlayerToSell()))
+                        parent.transferList.remove(sellRequest.getPlayerToSell());
                     parent.transferList.add(sellRequest.getPlayerToSell());
 
                     for(Map.Entry element: parent.clientMap.entrySet()){
