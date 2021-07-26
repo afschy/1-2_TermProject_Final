@@ -23,14 +23,18 @@ public class UIUpdater {
     public void login(Club club) {
         Platform.runLater(() -> {
             Main.currentClub = club;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
 
-            Parent root = null;
+            Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+                root = loader.load();
             } catch (Exception e) {
                 System.out.println(e);
                 return;
             }
+
+            controllers.Home controller = loader.getController();
+            controller.initTitle();
             stage.setTitle(Main.currentClub.getName());
             stage.setScene(new Scene(root));
             stage.setResizable(false);

@@ -8,24 +8,25 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.Player;
 import java.io.IOException;
 import java.util.List;
-import java.util.TreeMap;
 
 public class SearchAmongPlayers {
     @FXML
     private Button backButton, searchButton;
     @FXML
-    private TextField nameField, countryField, clubField, posField, minField, maxField;
+    private TextField nameField, countryField, posField, minField, maxField;
 
     @FXML
     private void backButtonPressed(ActionEvent event) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
+        Parent root = loader.load();
+        controllers.Home controller = loader.getController();
+        controller.initTitle();
         stage.setTitle(Main.currentClub.getName());
         stage.setScene(new Scene(root));
         //stage.setResizable(false);
@@ -39,7 +40,7 @@ public class SearchAmongPlayers {
 
         name = sample.IOControl.formatName(nameField.getText());
         country = sample.IOControl.formatName(countryField.getText());
-        clubName = sample.IOControl.formatName(clubField.getText());
+        clubName = Main.currentClub.getName();
         position = sample.IOControl.formatName(posField.getText());
 
         try {

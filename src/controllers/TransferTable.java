@@ -79,7 +79,10 @@ public class TransferTable {
     private void backButtonPressed() throws IOException {
         isRunning = false;
         Stage stage = (Stage)backButton.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
+        Parent root = loader.load();
+        controllers.Home controller = loader.getController();
+        controller.initTitle();
         stage.setTitle(Main.currentClub.getName());
         stage.setScene(new Scene(root));
         stage.show();

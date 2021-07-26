@@ -2,9 +2,11 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import messages.TransferListRequest;
 import sample.Main;
@@ -15,6 +17,13 @@ import java.util.TreeMap;
 public class Home {
     @FXML
     private Button button1, button2, button3, button4, logOutButton, transferButton;
+    @FXML
+    private Label title;
+
+    public void initTitle(){
+        title.setText(Main.currentClub.getName());
+        title.setAlignment(Pos.CENTER);
+    }
 
     @FXML
     private void startSearchAmongPlayers() throws IOException {

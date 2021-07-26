@@ -39,8 +39,7 @@ public class ReadThreadClient implements Runnable{
                 }
             }
         }catch (Exception e){
-            //System.out.println("Client read thread error");
-            System.out.println(e);
+            System.out.println("Client Closed");
         }
     }
 }
