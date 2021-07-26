@@ -5,7 +5,7 @@ import messages.*;
 public class ReadThreadClient implements Runnable{
     NetworkUtil networkUtil;
     Client parentClient;
-    public Thread thr;
+    Thread thr;
 
     public ReadThreadClient(NetworkUtil networkUtil, Client parentClient) {
         this.networkUtil = networkUtil;

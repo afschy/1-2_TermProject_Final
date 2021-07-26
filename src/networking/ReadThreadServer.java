@@ -9,18 +9,20 @@ public class ReadThreadServer implements Runnable{
     private Thread thr;
     private NetworkUtil networkUtil;
     private Server parent;
+    volatile private boolean isRunning;
 
     public ReadThreadServer(NetworkUtil networkUtil, Server parent){
         this.networkUtil = networkUtil;
         this.parent = parent;
         thr = new Thread(this);
+        isRunning = true;
         thr.start();
     }
 
     @Override
     public void run() {
         try{
-            while(true) {
+            while(isRunning) {
                 Object o = networkUtil.read();
 
                 if(o instanceof LoginRequest){
@@ -66,6 +68,11 @@ public class ReadThreadServer implements Runnable{
                     //System.out.println("Buy request received");
                     BuyRequest buyRequest = (BuyRequest) o;
                     parent.transfer(buyRequest.getPlayerToBuy(), buyRequest.getBuyerClubName());
+                }
+
+                else if(o instanceof CloseRequest){
+                    isRunning = false;
+                    parent.clientMap.remove(networkUtil);
                 }
             }
         }catch(Exception e){

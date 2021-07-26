@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import messages.CloseRequest;
 import messages.TransferListRequest;
 import sample.Main;
 
@@ -65,6 +66,7 @@ public class Home {
     private void exitSystem() throws Exception {
         Stage stage = (Stage) button4.getScene().getWindow();
         //sample.IOControl.writeToFile(sample.Main.playerList, sample.Main.OUTPUT_FILE_NAME);
+        sample.Main.client.getNetworkUtil().write(new CloseRequest());
         Main.client.getNetworkUtil().closeConnection();
         //Main.client.getReadThread().setStatus(false);
         stage.close();
