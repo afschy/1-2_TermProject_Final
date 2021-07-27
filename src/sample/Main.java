@@ -1,6 +1,5 @@
 package sample;
 
-import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +10,7 @@ import networking.Client;
 public class Main extends Application{
     public static Client client;
     public static Club currentClub;
-    public static List<Player> transferList;
+    //public static List<Player> transferList;
     Stage stage;
 
     public static void main(String[] args){ launch(args); }

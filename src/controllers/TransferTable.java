@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import messages.BuyRequest;
+import messages.SellCancelRequest;
 import messages.SellRequest;
 import sample.Main;
 import sample.Player;
@@ -145,6 +146,35 @@ public class TransferTable {
                 System.out.println("Buy request sending failed");
                 System.out.println(e);
             }
+        }
+    }
+
+    @FXML
+    private void cancelButtonPressed(){
+        Player selectedPlayer;
+        try{
+            selectedPlayer = new Player(tableViewTransfer.getSelectionModel().getSelectedItem());
+        }catch(NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No Player Selected");
+            alert.showAndWait();
+            return;
+        }
+
+        if(!selectedPlayer.getClubName().equalsIgnoreCase(Main.currentClub.getName())){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Can only remove own players from transfer list");
+            alert.showAndWait();
+            return;
+        }
+
+        try{
+            Main.client.getNetworkUtil().write(new SellCancelRequest(selectedPlayer));
+        }catch(Exception e){
+            System.out.println("Removal message sending failed");
+            System.out.println(e);
         }
     }
 }

@@ -52,22 +52,19 @@ public class ReadThreadServer implements Runnable{
                     if(parent.transferList.contains(sellRequest.getPlayerToSell()))
                         parent.transferList.remove(sellRequest.getPlayerToSell());
                     parent.transferList.add(sellRequest.getPlayerToSell());
-
-                    for(Map.Entry element: parent.clientMap.entrySet()){
-                        NetworkUtil destination = (NetworkUtil) element.getKey();
-                        Club club = (Club) element.getValue();
-                        try {
-                            destination.write(new TransferListAnswer(parent.transferList, club));
-                        }catch (Exception e){
-                            System.out.println(e);
-                        }
-                    }
+                    broadcast();
                 }
 
                 else if(o instanceof BuyRequest){
                     //System.out.println("Buy request received");
                     BuyRequest buyRequest = (BuyRequest) o;
                     parent.transfer(buyRequest.getPlayerToBuy(), buyRequest.getBuyerClubName());
+                }
+
+                else if(o instanceof SellCancelRequest){
+                    SellCancelRequest sellCancelRequest = (SellCancelRequest) o;
+                    parent.transferList.remove(sellCancelRequest.getPlayer());
+                    broadcast();
                 }
 
                 else if(o instanceof CloseRequest){
@@ -77,6 +74,18 @@ public class ReadThreadServer implements Runnable{
             }
         }catch(Exception e){
             System.out.println(e);
+        }
+    }
+
+    private void broadcast(){
+        for(Map.Entry element: parent.clientMap.entrySet()){
+            NetworkUtil destination = (NetworkUtil) element.getKey();
+            Club club = (Club) element.getValue();
+            try {
+                destination.write(new TransferListAnswer(parent.transferList, club));
+            }catch (Exception e){
+                System.out.println(e);
+            }
         }
     }
 }

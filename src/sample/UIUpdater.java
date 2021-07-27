@@ -54,7 +54,7 @@ public class UIUpdater {
     public void initTransferList(List<Player> receivedList, Club receivedClub){
         Platform.runLater(()->{
             Main.currentClub = receivedClub;
-            Main.transferList = receivedList;
+            //Main.transferList = receivedList;
             if(TransferTable.isRunning){
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/fxml/TransferTable.fxml"));

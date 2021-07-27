@@ -70,5 +70,10 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Button layoutX="119.0" layoutY="733.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="30.0" prefWidth="212.0" text="Remove From Transfer Pool">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
